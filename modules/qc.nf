@@ -8,7 +8,7 @@ process makeQCCSV {
 
     output:
     path "${params.prefix}.${sampleName}.qc.csv", emit: csv
-    path "${sampleName}.depth.png"
+    //path "${sampleName}.depth.png"
 
     script:
     if ( params.illumina ) {

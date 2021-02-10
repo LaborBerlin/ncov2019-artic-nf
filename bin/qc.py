@@ -158,7 +158,7 @@ def go(args):
         writer.writerow(qc_line)
 
     N_density = sliding_window_N_density(fasta)
-    make_qc_plot(depth_pos, N_density, args.sample)
+    #make_qc_plot(depth_pos, N_density, args.sample)
 
 def main():
     import argparse
