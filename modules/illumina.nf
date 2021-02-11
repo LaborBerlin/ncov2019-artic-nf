@@ -70,7 +70,6 @@ process readMapping {
     script:
       """
       bwa mem -L 5,10 -O 5 -E 1 -B 5 -t ${task.cpus} ${ref} ${forward} ${reverse} | \
-      samtools view -f 2 -u - |
       samtools sort -o ${sampleName}.sorted.bam
       """
 }
