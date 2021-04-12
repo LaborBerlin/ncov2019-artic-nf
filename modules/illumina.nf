@@ -69,8 +69,8 @@ process readMapping {
 
     script:
       """
-      bwa mem -L 5,20 -O 5,12 -E 1 -B 5 -t ${task.cpus} ${ref} ${forward} ${reverse} | \
-      perl -lsane 'print if /^@/ or !(\$F[3] >= 21617 and \$F[3] <= 21619 and length(\$F[9]) < 151)' | \
+      bwa mem -t ${task.cpus} ${ref} ${forward} ${reverse} | \
+      modify_sam.pl | \
       samtools sort -o ${sampleName}.sorted.bam
       """
 }
