@@ -13,9 +13,9 @@ use strict;
 my $n_soft = 40;
 
 while(<>) {
-  if(/^@/) { print; next; }
-  my @F = split(/\t/, $_);
-  if($F[3] < 21617 or $F[3] > 21619) { print; next; }
+	if(/^@/) { print; next; }
+	my @F = split(/\t/, $_);
+	if($F[3] < 21617 or $F[3] > 21619) { print; next; }
 	if(length($F[9]) < 100) { print; next; }
 	if($F[5] eq "*") { print; next; }
 
