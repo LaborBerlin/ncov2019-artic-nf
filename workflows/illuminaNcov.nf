@@ -80,7 +80,7 @@ workflow prepareReferenceFiles {
 }
 
 
-workflow sequenceAnalysis {
+workflow seqA {
     take:
       ch_filePairs
       ch_preparedRef
@@ -135,7 +135,7 @@ workflow ncovIllumina {
       prepareReferenceFiles()
       
       // Actually do analysis
-      sequenceAnalysis(ch_filePairs, prepareReferenceFiles.out.bwaindex, prepareReferenceFiles.out.bedfile)
+      seqA(ch_filePairs, prepareReferenceFiles.out.bwaindex, prepareReferenceFiles.out.bedfile)
 
       // Do some typing if we have the correct files
       if ( params.gff ) {
@@ -145,7 +145,7 @@ workflow ncovIllumina {
           Channel.fromPath("${params.yaml}")
                  .set{ ch_typingYaml }
 
-          Genotyping(sequenceAnalysis.out.variants, ch_refGff, prepareReferenceFiles.out.reffasta, ch_typingYaml) 
+          Genotyping(seqA.out.variants, ch_refGff, prepareReferenceFiles.out.reffasta, ch_typingYaml) 
 
       }
 }
